@@ -1,0 +1,100 @@
+<mat-card class="cstm-header-01"></mat-card>
+
+<section class="main-bg-01">
+  <div class="inner-bg-01">
+    
+    <div class="row">
+
+      <div class="column1">
+        <div class="card">
+          <form [formGroup]="ControlForm">
+            <div class="row">
+              
+              <h4>INPUT</h4>
+              <div class="form-group row cstm-lgn-frm">
+                <mat-form-field appearance="outline">
+                  <mat-label>X Coordinate</mat-label>
+                  <input matInput type="number" (keyup)="changePosition('x', ControlForm.value.x_axis)" formControlName="x_axis">
+                </mat-form-field>
+              </div>
+
+              <div class="form-group row cstm-lgn-frm">
+                <mat-form-field appearance="outline">
+                  <mat-label>Y Coordinate</mat-label>
+                  <input matInput type="number" (keyup)="changePosition('y', ControlForm.value.y_axis)" formControlName="y_axis">
+                </mat-form-field>
+              </div>
+
+              <div class="form-group row cstm-lgn-frm">
+                <mat-form-field appearance="outline">
+                  <mat-label>Width</mat-label>
+                  <input matInput type="number" formControlName="width">
+                </mat-form-field>
+              </div>
+
+              <div class="form-group row cstm-lgn-frm">
+                <mat-form-field appearance="outline">
+                  <mat-label>Height</mat-label>
+                  <input matInput type="number" formControlName="height">
+                </mat-form-field>
+              </div>
+
+            </div>
+          </form>
+
+
+        </div>
+      </div>
+
+      <div class="column2">
+        <div class="card">
+                  <h4>PREVIEW</h4>
+          <ul class="yAxis">
+            <li>10</li>
+            <li>9</li>
+            <li>8</li>
+            <li>7</li>
+            <li>6</li>
+            <li>5</li>
+            <li>4</li>
+            <li>3</li>
+            <li>2</li>
+            <li>1</li>
+
+          </ul>
+            <dl id="csschart">
+              <!-- <form> -->
+                <div class="row">
+
+                  <div class="example-boundary">
+                    <div class="example-box" [ngStyle]="{'width': ControlForm.value.width + 'px', 'height' : ControlForm.value.height +'px'}" cdkDrag [cdkDragFreeDragPosition]="dragPosition">
+                    </div>
+                  </div>
+
+                </div>
+              <!-- </form> -->
+          </dl>
+          <ul class="xAxis">
+            <li>0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+            <li>11</li>
+            <li>12</li>
+            
+          </ul>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
