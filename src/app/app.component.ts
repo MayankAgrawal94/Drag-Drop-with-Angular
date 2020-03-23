@@ -14,11 +14,11 @@ export class AppComponent {
 
   constructor(
   	private formbulider: FormBuilder, 
-	private cdr: ChangeDetectorRef,
+	  private cdr: ChangeDetectorRef,
   ){  
 	  this.ControlForm = this.formbulider.group({
-	    x_axis : [null, Validators.compose([Validators.required, Validators.pattern(/^-?([1-9]\d*)?$/)])],
-	    y_axis : [null, Validators.compose([Validators.required, Validators.pattern(/^-?([1-9]\d*)?$/)])],
+	    x_axis : [null, Validators.compose([Validators.required,])],
+	    y_axis : [null, Validators.compose([Validators.required,])],
 	    width : [null, Validators.compose([Validators.required, Validators.pattern(/^-?([1-9]\d*)?$/), Validators.minLength(1)])],
 	    height : [null, Validators.compose([Validators.required, Validators.pattern(/^-?([1-9]\d*)?$/), Validators.minLength(1)])],
 	  });
@@ -37,4 +37,37 @@ export class AppComponent {
   	}
   	this.cdr.detectChanges();
   }
+
+  // onDragEnded(event) {
+  //   console.log(event.source.getRootElement().getBoundingClientRect());
+  // }
+
+  onDragEnded(event) {
+    let element = event.source.getRootElement();
+    let boundingClientRect = element.getBoundingClientRect();
+    console.log(boundingClientRect)
+    // let dragX = (boundingClientRect.x - 649.59375)
+    // let dragy = (boundingClientRect.y - 192.265625)
+    // this.ControlForm.controls['x_axis'].setValue(dragX)
+    // this.ControlForm.controls['y_axis'].setValue(dragy)
+    // var testDiv = document.getElementById("inner-box")
+    // console.log(testDiv.offsetTop)
+    let parentPosition = this.getPosition(element);
+    this.ControlForm.controls['x_axis'].setValue(boundingClientRect.x - parentPosition.left - 0.390625)
+    this.ControlForm.controls['y_axis'].setValue(- (boundingClientRect.y - parentPosition.top - 0.265625 ) )
+    // console.log('x: ' + (boundingClientRect.x - parentPosition.left), 'y: ' + (boundingClientRect.y - parentPosition.top));        
+    this.cdr.detectChanges();
+  }
+
+  getPosition(el) {
+    let x = 0;
+    let y = 0;
+    while(el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
+      x += el.offsetLeft - el.scrollLeft;
+      y += el.offsetTop - el.scrollTop;
+      el = el.offsetParent;
+    }
+    return { top: y, left: x };
+  }
+
 }
