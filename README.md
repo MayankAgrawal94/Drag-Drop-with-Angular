@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Check Online 
 
-[Link 1](https://mayankagrawal94.github.io/drag-feature-with-emitting-x-y-coordinate/), [Link 2](http://mayank.frikis.xyz/git_publish/drag-feature-with-emitting-x-y-coordinate/)
+[Link 1](https://mayankagrawal94.github.io/drag-feature-with-emitting-x-y-coordinate/), [Link 2](http://mayank.info/git_publish/drag-feature-with-emitting-x-y-coordinate/)
 
 ## Development server
 
